@@ -1,12 +1,19 @@
 import { Request, Response } from "express";
-import { promisify } from 'util';
-import { exec } from 'child_process';
+import { spawn } from 'child_process';
 
 class CommandController {
 
+  private tmpCmds = [
+    'ls -l',
+    'ls',
+    'xfce4-terminal -e "htop"',
+    'xfce4-terminal -e "thunar"',
+    'thunar',
+  ];
+
   async list(_req: Request, res: Response) {
     try {
-      return res.json({ commands: [] });
+      return res.json({ commands: this.tmpCmds });
     } catch (e) {
       return res.json({ message: e.message });
     }
@@ -14,23 +21,16 @@ class CommandController {
 
   async run(req: Request, res: Response) {
     try {
-      const execPromise = promisify(exec);
-
       const command = req.body.command;
 
-      if (!command) {
+      if (!command || !this.tmpCmds.includes(command)) {
         throw new Error('Unknown command!');
       }
 
-      const { stdout, stderr } = await execPromise(command);
-
-      if (stderr) {
-        throw new Error(stderr);
-      }
+      const child = spawn(command);
 
       return res.json({
-        status: 'success',
-        stdout
+        status: 'success'
       });
 
     } catch (e) {
