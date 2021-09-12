@@ -7,6 +7,9 @@ import MainWindow from './windows/main/MainWindow';
 // configs
 import envs from './envs';
 
+// server
+import App from './server/App';
+
 class Main {
   constructor() {
     const {
@@ -15,6 +18,7 @@ class Main {
 
     this.isDev = isDev;
     this.run();
+    (new App()).startServer(); 
   }
 
   /**
