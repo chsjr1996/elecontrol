@@ -1,6 +1,7 @@
 # Deps & build
 node_modules
 dist
+build
 
 # Envs
 .env
