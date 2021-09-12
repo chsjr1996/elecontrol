@@ -11,7 +11,6 @@
   },
   "keywords": [
     "electron",
-    "reactjs",
     "typescript",
     "boilerplate"
   ],
@@ -36,34 +35,23 @@
   "scripts": {
     "clean:build": "rimraf build",
     "clean:linux": "rimraf dist/electron-elecontrol-linux-* dist/*.deb",
-    "electron:compile": "npm run clean:build && tsc -p tsconfig.browser.json",
+    "electron:compile": "npm run clean:build && tsc -p tsconfig.browser.json && ncp src/renderer build/renderer",
     "dev:server:tsc": "tsc -p tsconfig.server.json --watch",
     "dev:server:nodemon": "wait-on build && nodemon --watch 'build/browser/server' --exec 'node build/browser/server/App.js'",
     "dev:server:watch": "concurrently --name 'tsc,nodemon' --prefix name 'npm run dev:server:tsc' 'npm run dev:server:nodemon'",
-    "dev:webpack": "webpack-dev-server --color --config ./webpack.dev.config.js",
-    "dev:electron:run": "wait-on http://localhost:3000 build && node scripts/start-dev.js",
+    "dev:electron:run": "wait-on build && node scripts/start-dev.js",
     "dev:electron:all": "concurrently --names 'compile,run' --prefix name 'npm run electron:compile' 'npm run dev:electron:run'",
-    "dev": "concurrently --names 'webpack,compile,run' --prefix name 'npm run dev:webpack' 'npm run electron:compile' 'npm run dev:electron:run'",
-    "prod:webpack": "webpack -p --color --config ./webpack.prod.config.js",
-    "build:linux": "npm run clean:linux && npm run electron:compile && npm run prod:webpack && electron-builder --linux"
+    "build:linux": "npm run clean:linux && npm run electron:compile && electron-builder --linux"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
-    "styled-components": "^5.3.1"
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@types/electron-devtools-installer": "^2.2.0",
     "@types/express": "^4.17.13",
     "@types/node": "12",
-    "@types/react": "^16.9.27",
-    "@types/react-dom": "^16.9.5",
-    "@types/react-router-dom": "^5.1.5",
-    "@types/styled-components": "^5.1.14",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
     "babel-loader": "^8.1.0",
@@ -72,15 +60,12 @@
     "electron-builder": "^22.7.0",
     "electron-devtools-installer": "^2.2.4",
     "eslint": "^6.8.0",
-    "html-webpack-plugin": "^4.0.3",
+    "ncp": "^2.0.0",
     "nodemon": "^2.0.12",
     "rimraf": "^3.0.2",
     "ts-loader": "^6.2.2",
     "tsc": "^1.20150623.0",
     "typescript": "^3.8.3",
-    "wait-on": "^4.0.1",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
+    "wait-on": "^4.0.1"
   }
 }

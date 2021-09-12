@@ -2,8 +2,7 @@ import envs from '../../envs';
 
 const {
   electron: {
-    isDev,
-    windows: { mainPath, mainUrl }
+    windows: { mainPath }
   }
 } = envs;
 
@@ -12,5 +11,5 @@ export default {
     width: 800,
     height: 600
   },
-  baseUrl: isDev ? mainUrl : mainPath
+  baseUrl: mainPath
 };

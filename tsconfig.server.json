@@ -5,5 +5,5 @@
     "outDir": "build/browser/server"
   },
   "include": ["src/browser/server/**/*"],
-  "exclude": ["src/renderer", ""]
+  "exclude": ["src/renderer"]
 }
