@@ -1,14 +1,13 @@
 {
-  "name": "electron-reactjs-template",
+  "name": "elecontrol",
   "version": "0.0.1",
-  "description": "Electron Electron app template with Typescript and ReactJS",
+  "description": "Control your PC from remote device",
   "author": {
-    "name": "Carlos H.",
-    "email": "chsjr1996@gmail.com"
+    "name": "Carlos H."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chsjr1996/electron-reacjs-template.git"
+    "url": "git+https://github.com/chsjr1996/elecontrol"
   },
   "keywords": [
     "electron",
@@ -18,15 +17,15 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chsjr1996/electron-reacjs-template/issues"
+    "url": "https://github.com/chsjr1996/elecontrol/issues"
   },
-  "homepage": "https://github.com/chsjr1996/electron-reacjs-template#readme",
+  "homepage": "https://github.com/chsjr1996/elecontrol#readme",
   "main": "./build/browser/main.js",
   "build": {
     "files": [
       "build/**/*"
     ],
-    "appId": "org.electron.reactjs.template",
+    "appId": "org.electron.elecontrol",
     "linux": {
       "target": [
         "deb",
@@ -36,7 +35,7 @@
   },
   "scripts": {
     "clean:build": "rimraf build",
-    "clean:linux": "rimraf dist/electron-reactjs-template-linux-* dist/*.deb",
+    "clean:linux": "rimraf dist/electron-elecontrol-linux-* dist/*.deb",
     "electron:compile": "npm run clean:build && tsc -p tsconfig.browser.json",
     "dev:webpack": "webpack-dev-server --color --config ./webpack.dev.config.js",
     "dev:electron:run": "wait-on http://localhost:3000 && node scripts/start-dev.js",

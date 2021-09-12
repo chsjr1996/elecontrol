@@ -1,8 +1,8 @@
-# Electron ReactJS template
+# Elecontrol 
 
-![electron-reactjs-template-cover](https://repository-images.githubusercontent.com/250954487/fa559280-786a-11ea-8aa5-997defa997f9)
+![elecontrol-cover](https://repository-images.githubusercontent.com/250954487/fa559280-786a-11ea-8aa5-997defa997f9)
 
-This is an electron template that use ReactJS for renderer process. It's only a simple template for allow you to add more logic and packages for both browser and renderer process.
+This application host a ExpressJS serve to allow manage Operation System commands and expose a webview to use them. Then you can control your PC by create commands like: open an application, change brightness, and others...
 
 ---
 
@@ -27,8 +27,10 @@ This is an electron template that use ReactJS for renderer process. It's only a 
 
 Clone and install dependencies
 
-- `git clone https://github.com/chsjr1996/electron-reactjs-template.git`
+- `git clone https://github.com/chsjr1996/elecontrol.git`
 - `npm install`
+
+Copy `.env.example` to `.env` and fill the envs correctly
 
 For compile all ReactJS files in a bundle package and Browser TS files for execute Electron use:
 
@@ -58,11 +60,7 @@ This command will "compile" Electron (tsc), ReactJS (webpack) and execute **elec
 
 ---
 
-## Notes about development
-
-I will try to keep this project up to date and add some necessary resources, but never running away from the objective of the model, which is simple. For other advanced features I will create other repositories.
-
-If you have a suggestion or detect a bug, please open issue in this repository.
+## Under developement
 
 ---
 
