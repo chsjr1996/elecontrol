@@ -1,4 +1,5 @@
 import * as express from 'express';
+import router from './router';
 
 export default class App {
   private app: express.Express;
@@ -12,13 +13,11 @@ export default class App {
   }
 
   private middlewares() {
-
+    this.app.use(express.json());
   }
 
   private routes() {
-    this.app.get('/', (req, res) => {
-      return res.json({ msg: 'Hello!' });
-    })
+    router(this.app);
   }
 
   public startServer() {
@@ -27,3 +26,5 @@ export default class App {
     });
   }
 }
+
+(new App()).startServer();
